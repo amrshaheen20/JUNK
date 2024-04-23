@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="Domino_Game.Lib.Core.Components.UserPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Domino_Game.Lib.Core.Components"
+             mc:Ignorable="d"
+            >
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="5">
+
+            <Border Background="#cc000000"  Padding="5"  Height="20" MaxWidth="60" >
+                <TextBlock x:Name="PlayerScore" Foreground="White" Text="100\100" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold"/>
+            </Border>
+
+            <Border CornerRadius="50" Margin="5" Height="50" Width="50"  >
+                <Border.Background>
+                    <ImageBrush x:Name="UserImage" Stretch="Fill" ImageSource="/Lib/assets/images/user.jpg"/>
+                </Border.Background>
+            </Border>
+
+
+            <TextBlock x:Name="PlayerName" Text="Amr shaheen" MaxWidth="100" Foreground="White" FontWeight="Bold" TextWrapping="Wrap" TextAlignment="Center"  />
+        </StackPanel>
+
+    </Grid>
+</UserControl>

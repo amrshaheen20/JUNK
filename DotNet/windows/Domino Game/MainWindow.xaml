@@ -1,0 +1,354 @@
+﻿<Window x:Class="Domino_Game.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:uc="clr-namespace:Domino_Game.Lib.Core.Components"
+        xmlns:local="clr-namespace:Domino_Game"
+        xmlns:Game="clr-namespace:Domino_Game.Lib.Core"
+        xmlns:components="clr-namespace:Domino_Game.Lib.Core.Components"
+        mc:Ignorable="d"
+        Title="Domino Game"
+        SizeToContent="Manual"
+        MinWidth="1000"
+        Height="638"
+        Width="876">
+
+
+    <Grid  Background="Green">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="auto" />
+            <ColumnDefinition  Width="*" />
+            <ColumnDefinition  Width="auto" />
+            <ColumnDefinition  Width="auto" />
+        </Grid.ColumnDefinitions>
+
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="1"
+                    MaxHeight="150"
+                    MinHeight="80"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel AllowDrop="True"
+                        Orientation="Horizontal"
+                        x:Name="Player3"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="player3" />
+            </StackPanel>
+
+        </StackPanel>
+
+        <StackPanel  Grid.Row="2"
+                     Grid.Column="1"
+                     MaxHeight="150"
+                     MinHeight="80"
+                     MinWidth="600"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal"
+                        Name="Player1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <TextBlock Text="player1" />
+
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="2"
+                    MaxWidth="150"
+                    MinWidth="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical"
+                        Name="Player2"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="player2" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="0"
+                    MaxWidth="150"
+                    MinWidth="10"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical"
+                        Name="Player4"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="player4" />
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1"
+                    Grid.Column="3"
+                    MaxWidth="60"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+            <StackPanel Orientation="Vertical"
+                        Name="Remaining_Cards"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock Text="Remaining cards" />
+            </StackPanel>
+        </StackPanel>
+
+        <Border AllowDrop="True"
+                Drop="Board_Drop"
+                DragOver="Board_DragOver"
+                DragEnter="Board_DragEnter"
+                DragLeave="Board_DragLeave"
+                x:Name="border1"
+                ClipToBounds="True"
+                CornerRadius="20"
+                Grid.Row="1"
+                Grid.Column="1">
+            <Border.Clip>
+                <RectangleGeometry  RadiusX="30"
+                                    RadiusY="30">
+                    <RectangleGeometry.Rect>
+                        <MultiBinding Converter="{StaticResource RectConverter}">
+                            <Binding ElementName="border1"
+                                     Path="ActualWidth" />
+                            <Binding ElementName="border1"
+                                     Path="ActualHeight" />
+                        </MultiBinding>
+                    </RectangleGeometry.Rect>
+                </RectangleGeometry>
+            </Border.Clip>
+
+
+            <components:BoardDarw IsEnabled="False"
+                                  Background="#9ade7b"
+                                  x:Name="Board"
+                                  Grid.Row="1"
+                                  Grid.Column="1">
+
+            </components:BoardDarw>
+
+        </Border>
+
+        <StackPanel Grid.Row="0"
+                    Grid.Column="0"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Orientation="Vertical">
+            <Button x:Name="btnExitGame"
+                    Margin="5,0,0,0"
+                    Padding="10"
+                    FontSize="10"
+                    Click="btnExitGame_Click"
+                    Height="49">
+
+                <Path Stretch="Fill"
+                      x:Name="ExitGame"
+                      Stroke="White">
+
+                    <Path.Data>M 27.212 14.191 c 0.0505 -0.122 0.0505 -0.2595 0 -0.382 c -0.0255 -0.0615 -0.0625 -0.117 -0.1085 -0.1635 L 21.104 7.6465 c -0.1955 -0.1955 -0.5115 -0.1955 -0.707 0 s -0.1955 0.5115 0 0.707 L 25.5435 13.5 H 10.2505 c -0.276 0 -0.5 0.2235 -0.5 0.5 s 0.224 0.5 0.5 0.5 h 15.293 L 20.397 19.6465 c -0.1955 0.1955 -0.1955 0.5115 0 0.707 C 20.4945 20.451 20.6225 20.5 20.7505 20.5 s 0.256 -0.049 0.3535 -0.1465 l 5.9995 -5.9995 C 27.1495 14.308 27.1865 14.2525 27.212 14.191 z M 18.2505 16.5 c -0.276 0 -0.5 0.2235 -0.5 0.5 v 10 h -16 V 1 h 16 v 10 c 0 0.2765 0.224 0.5 0.5 0.5 s 0.5 -0.2235 0.5 -0.5 V 0.5 c 0 -0.2765 -0.224 -0.5 -0.5 -0.5 h -17 c -0.276 0 -0.5 0.2235 -0.5 0.5 v 27 c 0 0.2765 0.224 0.5 0.5 0.5 h 17 c 0.276 0 0.5 -0.2235 0.5 -0.5 V 17 C 18.7505 16.7235 18.5265 16.5 18.2505 16.5 z</Path.Data>
+                </Path>
+
+
+            </Button>
+        </StackPanel>
+
+        <Grid x:Name="NextRound"
+              Visibility="Hidden"
+              Background="#cc000000"
+              Grid.Row="0"
+              Grid.ColumnSpan="4"
+              Grid.RowSpan="3">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock TextAlignment="Center"
+                           Text="NEXT ROUND"
+                           FontWeight="Black"
+                           Foreground="Green"
+                           FontSize="80" />
+
+                <StackPanel x:Name="RoundPlayersCards"
+                            Orientation="Horizontal"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+
+                </StackPanel>
+
+                <TextBlock x:Name="RoundWinnerPlayer"
+                           Margin="10,10,10,10"
+                           TextAlignment="Center"
+                           Text="Winner player"
+                           FontWeight="Normal"
+                           Foreground="White"
+                           FontSize="20" />
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="GameOverMenu"
+              Visibility="Hidden"
+              Background="#cc000000"
+              Grid.Row="0"
+              Grid.ColumnSpan="4"
+              Grid.RowSpan="3">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <TextBlock TextAlignment="Center"
+                           Text="GAME OVER"
+                           FontWeight="Black"
+                           Foreground="Red"
+                           FontSize="80" />
+                <TextBlock x:Name="WinnerPlayer"
+                           Margin="10,10,10,10"
+                           TextAlignment="Center"
+                           Text="Winner player"
+                           FontWeight="Normal"
+                           Foreground="White"
+                           FontSize="20" />
+                <Button Margin="10,10,10,10"
+                        Padding="10"
+                        Content="New Game"
+                        MaxWidth="200"
+                        Click="btnExitGame_Click" />
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="MainMenu"
+              Background="Green"
+              Grid.Row="0"
+              Grid.ColumnSpan="4"
+              Grid.RowSpan="3">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+                <TextBlock TextAlignment="Center"
+                           Text="Domino Game"
+                           FontWeight="Black"
+                           Foreground="#FFFFF500"
+                           FontSize="80" />
+                <Button x:Name="mainMenubtn"
+                        Click="mainMenubtn_Click"
+                        Margin="10,10,10,10"
+                        Padding="10"
+                        Content="Play"
+                        MaxWidth="200"
+                        Foreground="White" />
+                <TextBlock TextAlignment="Center"
+                           Text="By: Amr Shaheen"
+                           FontWeight="Black"
+                           Foreground="White"
+                           FontSize="20" />
+            </StackPanel>
+        </Grid>
+
+        <Grid x:Name="SelectGame"
+              Visibility="Hidden"
+              Background="Green"
+              Grid.Row="0"
+              Grid.ColumnSpan="4"
+              Grid.RowSpan="3">
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+
+
+                <TextBlock Text="Player Name:"
+                           Margin="10"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White" />
+                <TextBox Text="{Binding PlayerName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         Width="353"
+                         FontSize="20"
+                         TextAlignment="Center"
+                         Height="46" />
+
+
+
+                <TextBlock Text="Game Type:"
+                           Margin="10"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White" />
+                <ComboBox Name="GameType"
+                          Width="200"
+                          FontSize="20"
+                          Height="45">
+
+                    <ComboBoxItem Selector.IsSelected="True"
+                                  Content="Regular" />
+                </ComboBox>
+
+
+
+                <TextBlock Text="Players:"
+                           Margin="10"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White" />
+
+                <ComboBox Name="PlayersCount"
+                          Width="200"
+                          FontSize="20"
+                          Height="48">
+                    <ComboBoxItem Selector.IsSelected="True"
+                                  Content="1 To 1" />
+                    <ComboBoxItem Content="1 To 2" />
+                    <ComboBoxItem Content="1 To 3" />
+                </ComboBox>
+
+
+
+                <TextBlock Text="Difficulty:"
+                           Margin="10"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White" />
+
+                <ComboBox Name="GameDifficulty"
+                          Width="200"
+                          FontSize="20"
+                          Height="49">
+
+                    <ComboBoxItem Selector.IsSelected="True"
+                                  Content="Easy" />
+                    <ComboBoxItem Content="Normal" />
+                    <ComboBoxItem Content="Hard" />
+                </ComboBox>
+
+                <TextBlock Text="Max Points:"
+                           Margin="10"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White" />
+
+                <TextBox Name="MaxPoints"
+                         Width="166"
+                         FontSize="20"
+                         TextAlignment="Center"
+                         Height="46"
+                         Text="{Binding MaxPoint, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                         
+                         >
+                </TextBox>
+
+
+                <Button x:Name="StartGame"
+                        Margin="10"
+                        Padding="10"
+                        Content="Start Game"
+                        MaxWidth="200"
+                        Foreground="White"
+                        Click="StartGame_Click"
+                        Height="71" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
