@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <RootNamespace>XO_Game</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+	<IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+	<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+	<EnableWindowsTargeting>true</EnableWindowsTargeting>
+	<PublishSingleFile>true</PublishSingleFile>
+	<PublishTrimmed>false</PublishTrimmed>
+	<PublishReadyToRun>true</PublishReadyToRun>
+	<EnableCompressionInSingleFile>false</EnableCompressionInSingleFile>
+	<SelfContained>false</SelfContained>
+	<Configurations>Debug;Release</Configurations>
+	<ApplicationIcon>tic-tac-toe.ico</ApplicationIcon>
+   <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="tic-tac-toe.ico" />
+  </ItemGroup>
+
+</Project>
